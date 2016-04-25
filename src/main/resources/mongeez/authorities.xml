@@ -1,0 +1,9 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-1" author="tshirtapp">
+        <script>
+            db.t_authority.insert({"_id" : "ROLE_ADMIN"});
+            db.t_authority.insert({"_id" : "ROLE_USER"});
+            db.t_authority.insert({"_id" : "ROLE_CLIENT"});
+        </script>
+    </changeSet>
+</mongoChangeLog>

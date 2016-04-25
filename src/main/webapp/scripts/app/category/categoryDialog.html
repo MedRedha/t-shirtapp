@@ -1,0 +1,27 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form ng-submit="vm.save()" class="form-horizontal">
+
+    <fieldset>
+        <legend>Catégorie {{vm.Category.id}}</legend>
+
+        <div class="form-group">
+            <label for="ref" class="control-label col-md-2">Nom</label>
+
+            <div class="col-md-10">
+                <input id="ref" type="text" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.category.name">
+            </div>
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary">
+            <span class=""></span>&nbsp;<span>Créer</span>
+        </button>
+
+    </fieldset>
+</form>
+
+

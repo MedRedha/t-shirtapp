@@ -1,0 +1,188 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form ng-submit="vm.save()" class="form-horizontal">
+
+    <fieldset>
+        <legend>Product {{vm.product.id}}</legend>
+
+        <div class="form-group">
+            <label for="ref" class="col-md-2 control-label">Réference</label>
+
+            <div class="col-md-10">
+                <input id="ref" type="text" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.product.ref">
+            </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Catégorie</label>
+            <div class="col-md-10">
+                <select class="form-control" ng-model="vm.product.productType"
+                        ng-options="item.name for item in vm.temp"></select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="color" class="col-md-2 control-label">Couleur</label>
+
+            <div class="col-md-10">
+                <input id="color" type="color" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.product.color">
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Taille</label>
+            <div class="col-md-10">
+                <select class="form-control" ng-model="vm.product.size" required="true">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="XXXL">XXXL</option>
+                    <option value="XXXXL">XXXXL</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="quantity" class="col-md-2 control-label">Quantité</label>
+            <div class="col-md-10">
+            <input id="quantity" type="number" required="true" class="form-control" ngRequired="true"
+                   ng-model="vm.product.quantity">
+                </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="togglebutton">
+                    <label>
+                        <input type="checkbox" ng-model="vm.product.status" ng-true-value="'ENABLED'"
+                               ng-false-value="'DISABLED'"> Statut
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Avant</label>
+
+
+            <div class="col-md-4">
+                <div class=" input-group">
+                <span class="input-group-btn input-group-sm">
+                    <button type="file" ngf-select class="btn btn-fab btn-fab-mini"
+                            accept="image/*" ng-model="vm.file">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                     </span>
+                    <input id="uuid" type="text" required readonly class="form-control" ngRequired="true"
+                           ng-model="vm.product.logoPath">
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <img ngf-thumbnail="vm.file" width="104" height="136">
+            </div>
+            <div class="col-md-2">
+                <a ng-click="vm.submit()" class="btn btn-primary">Télécharger</a>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Dos</label>
+
+
+            <div class="col-md-4">
+                <div class=" input-group">
+                <span class="input-group-btn input-group-sm">
+                    <button type="file" ngf-select class="btn btn-fab btn-fab-mini"
+                            accept="image/*" ng-model="vm.fileBack">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                     </span>
+                    <input id="uuidBack" type="text" required readonly class="form-control" ngRequired="true"
+                           ng-model="vm.product.logoPathBack">
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <img ngf-thumbnail="vm.fileBack" width="104" height="136">
+            </div>
+            <div class="col-md-2">
+                <a ng-click="vm.submitBack()" class="btn btn-primary">Start Upload</a>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Gauche</label>
+
+
+            <div class="col-md-4">
+                <div class=" input-group">
+                <span class="input-group-btn input-group-sm">
+                    <button type="file" ngf-select class="btn btn-fab btn-fab-mini"
+                            accept="image/*" ng-model="vm.fileLeft">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                     </span>
+                    <input id="uuidLeft" type="text" required readonly class="form-control" ngRequired="true"
+                           ng-model="vm.product.logoPathLeft">
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <img ngf-thumbnail="vm.fileLeft" width="104" height="136">
+            </div>
+            <div class="col-md-2">
+                <a ng-click="vm.submitLeft()" class="btn btn-primary">Start Upload</a>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Droite</label>
+
+
+            <div class="col-md-4">
+                <div class=" input-group">
+                <span class="input-group-btn input-group-sm">
+                    <button type="file" ngf-select class="btn btn-fab btn-fab-mini"
+                            accept="image/*" ng-model="vm.fileRight">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                     </span>
+                    <input id="uuidRight" type="text" required readonly class="form-control" ngRequired="true"
+                           ng-model="vm.product.logoPathRight">
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <img ngf-thumbnail="vm.fileRight" width="104" height="136">
+            </div>
+            <div class="col-md-2">
+                <a ng-click="vm.submitRight()" class="btn btn-primary">Start Upload</a>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <span class=""></span>&nbsp;<span>Créer</span>
+        </button>
+    </fieldset>
+
+</form>
+
+

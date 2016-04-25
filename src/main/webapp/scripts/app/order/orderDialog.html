@@ -1,0 +1,245 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.msg}}</uib-alert>
+<div class="row">
+    <div class="button-bar">
+
+        <div class="col-lg-6" ng-if="vm.statusNew(vm.order.status)">
+
+            <a class="btn btn-raised  btn-block btn-success" ng-click="vm.validate(vm.order,'PROGRESS')">Valider</a>
+        </div>
+        <div ng-if="vm.statusProgress(vm.order.status)" class="col-lg-6">
+
+            <a class="btn btn-raised  btn-block btn-info" ng-click="vm.validate(vm.order,'DELIVERED')">Delivred</a>
+        </div>
+        <div class="col-lg-6" ng-if="vm.statusOUT(vm.order.status)">
+            <a class="btn btn-raised btn-default btn-block" ng-click="vm.validate(vm.order,'WAIT_PAYMENT')">Valider Etape Une</a>
+        </div>
+        <div class="col-lg-6" ng-if="vm.statusWaitPayment(vm.order.status)">
+            <a class="btn btn-raised btn-default btn-block" ng-click="vm.validate(vm.order,'PROGRESS')">Valider Payment</a>
+        </div>
+        <div class="col-lg-6" ng-if="vm.statusProgress(vm.order.status) || vm.statusNew(vm.order.status) || vm.statusOUT(vm.order.status) || vm.statusWaitPayment(vm.order.status)">
+            <a class="btn btn-raised btn-danger btn-block" ng-click="vm.cancele(vm.order,'CANCELED')">Anuller</a>
+        </div>
+
+
+
+        <div class="col-lg-6" ng-if="vm.statusCanceled(vm.order.status)">
+            <h3>Commande Anuller Cause : {{vm.order.canceledFor}}</h3>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="col-lg-12" ng-if="vm.payment(vm.order.payment)">
+    <a ng-click="vm.openLightboxModal()">
+    <img ng-src="api/order/payment?orderID={{vm.order.id}}"
+         class="img-thumbnail" width="500" height="500">
+        </a>
+</div>
+
+<h1>Order {{vm.order.id}}</h1>
+<div class="form-group">
+    <label for="ref">Réference</label>
+
+    <input id="ref" type="text" required="true" class="form-control" ngRequired="true"
+           ng-model="vm.order.ref">
+</div>
+
+<div class="form-group">
+    <label for="ref">Statut</label>
+
+    <input id="status" type="text" required="true" class="form-control" ngRequired="true"
+           ng-model="vm.order.status">
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">Client <img
+            ng-src="https://graph.facebook.com/{{vm.order.client.fbID}}/picture?type=small">
+    </div>
+
+    <div class="panel-body">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+
+                <th data-field="name">Nom</th>
+                <th data-field="lastName">Prénom</th>
+                <th data-field="wilaya">Wilaya</th>
+                <th data-field="facebook">FaceBook</th>
+                <th data-field="status">Statut</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+            <td>{{vm.order.client.firstName}}</td>
+            <td>{{vm.order.client.lastName}}</td>
+            <td>{{vm.order.client.wilaya}}</td>
+            <td><a href="{{client.urlFb}}" target="_blank">Facebook profile</a></td>
+            <td>
+                <span class="label " ng-class="{'label-success': vm.order.client.status == 'ACTIVATED' , 'label-danger': vm.order.client.status == 'BLOCKED',
+              } ">{{vm.order.client.status}}
+                </span>
+
+            <td>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">Article: {{vm.order.product.productType.name}}</div>
+
+    <div class="panel-body">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th data-field="name">Réference</th>
+                <th data-field="status">Statut</th>
+                <th data-field="color">Couleur</th>
+                <th data-field="size">Taille</th>
+                <th data-field="quantity">Quantité Stock</th>
+                <th data-field="quantity">Quantité commande</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td><a ui-sref="product.edit({id:vm.order.product.id})">{{vm.order.product.ref}}</a></td>
+                <td>
+                    <span class="label" ng-class="{'label-success': vm.order.product.status == 'ENABLED' , 'label-danger': vm.order.product.status == 'DISABLED',
+              } ">{{vm.order.product.status}}
+                    </span>
+
+                </td>
+                <td><span class="btn btn-block" style="background: {{vm.order.product.color}}"> </span></td>
+                <td>{{vm.order.product.size}}</td>
+                <td>{{vm.order.product.quantity}}</td>
+                <td>{{vm.order.quantity}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">Texte</div>
+
+    <div class="panel-body">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Valeur</th>
+                <th>Fonte</th>
+                <th>Position</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="tex in vm.order.textOrders">
+                <td>{{tex.value}}</td>
+                <td>{{tex.font}}</td>
+                <td>{{vm.geImageSide(tex.view)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">Logos</div>
+
+    <div class="panel-body">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Télécharger</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Position</th>
+            </tr>
+
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="image in vm.order.imagerOrderList">
+
+                <td ng-if="!image.logo">
+
+                    <a target="_self" download="{{image.uuid}}{{vm.getExt(image.imagePath)}}"
+                       href="api/order/{{vm.order.id}}/image?name={{image.uuid}}{{vm.getExt(image.imagePath)}}"
+                       class="btn btn-primary">Download <span class=" glyphicon glyphicon-download"></span></a>
+                </td>
+                <td ng-if="image.logo">
+                    <a target="_self" download="{{image.imagePath}}"
+                       href="api/logo/image?name={{image.imagePath}}"
+                       class="btn btn-primary">Télécharger <span class=" glyphicon glyphicon-download"></span></a>
+                </td>
+                <td ng-if="image.logo">
+                    <img ng-src="api/logo/image?name={{image.imagePath}}"
+                         class="img-thumbnail img-rounded" alt="Cinque Terre" width="105" height="135">
+                    {{image.tag}}
+                </td>
+
+                <td ng-if="!image.logo">
+                    <img ng-src="api/order/{{vm.order.id}}/image?name={{image.uuid}}{{vm.getExt(image.imagePath)}}"
+                         class="img-thumbnail img-rounded" alt="Cinque Terre" width="304" height="136">
+                </td>
+                <td>{{vm.getExt(image.imagePath)}}</td>
+                <td>{{vm.geImageSide(image.view)}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">Captures</div>
+
+    <div class="panel-body">
+        <div class=" col-md-6" ng-repeat="f in vm.tempList">
+            <div class="row">
+                <a target="_self" download="{{f}}" class="btn  btn-block btn-primary"
+                   href="api/order/{{vm.order.id}}/image?name={{f}}">Télécharger <span
+                        class=" glyphicon glyphicon-download"></span></a>
+            </div>
+            <div class="row">
+                <img ng-src="api/order/{{vm.order.id}}/image?name={{f}}"
+                     class="img-thumbnail img-rounded img-responsive" alt="Cinque Terre">
+            </div>
+            <div class="row" style="background: indigo;color: white">
+                <h4 class="text-center">{{vm.geImageSide(f)}}</h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">Description</div>
+
+    <div class="panel-body">
+        <div class=" col-md-12">
+            <textarea class="form-control" rows="4" readonly ng-model="vm.order.description"/>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+

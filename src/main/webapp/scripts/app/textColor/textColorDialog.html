@@ -1,0 +1,40 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form ng-submit="vm.save()" class="form-horizontal">
+
+    <fieldset>
+        <legend>textColor {{vm.textColor.id}}</legend>
+
+
+
+
+        <div class="form-group">
+            <label for="ref" class="control-label col-md-2">Name</label>
+
+            <div class="col-md-10">
+                <input id="ref" type="text" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.textColor.name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ref" class="control-label col-md-2">Value</label>
+
+            <div class="col-md-10">
+                <input id="value" type="color" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.textColor.value">
+            </div>
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">
+            <span class=""></span>&nbsp;<span>Save</span>
+        </button>
+
+    </fieldset>
+</form>
+
+

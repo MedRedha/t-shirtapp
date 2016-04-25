@@ -1,0 +1,50 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form name="editForm" role="form" ng-submit="vm.save()">
+    <fieldset>
+        <legend>User {{vm.user.id}}</legend>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="first_name">Nom</label>
+            <div class="col-md-10">
+                <input id="first_name" type="text" required="true" class="form-control" ng-model="vm.user.firstName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="last_name">Prénom</label>
+            <div class="col-md-10">
+                <input id="last_name" type="text" required="true" class="form-control" ng-model="vm.user.lastName">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="username-new">Nom d'utilasteur</label>
+            <div class="col-md-10">
+            <input id="username-new" type="text" required="true" class="form-control" ng-model="vm.user.username">
+        </div>
+            </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="password-new">Mot de passe </label>
+            <div class="col-md-10">
+                <input id="password-new" type="password" required="true" class="form-control" ng-model="vm.user.password">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="phoneNumber">Téléphone</label>
+            <div class="col-md-10">
+                <input id="phoneNumber" type="text" required="true" class="form-control" ng-model="vm.user.phoneNumber">
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary btn-large">
+            <span class=""></span>&nbsp;<span>Créer</span>
+        </button>
+
+    </fieldset>
+</form>
+

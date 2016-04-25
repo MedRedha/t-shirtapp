@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="material-icons md-48">store</i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{vm.home.nbOrders}}</div>
+                        <div>Nombre de commandes</div>
+                    </div>
+                </div>
+            </div>
+            <a ui-sref="order">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="material-icons">navigate_next</i></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="material-icons md-48">store</i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{vm.home.nbOrdersNew}}</div>
+                        <div>Nouvelles commandes</div>
+                    </div>
+                </div>
+            </div>
+            <a ui-sref="order">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="material-icons">navigate_next</i></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="material-icons md-48">done</i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">{{vm.home.nbOrdersDelivered}}</div>
+                        <div>Commande Delivere</div>
+                    </div>
+                </div>
+            </div>
+            <a ui-sref="client">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="material-icons">navigate_next</i></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="material-icons md-48">supervisor_account</i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{vm.home.nbClient}}</div>
+                            <div>Nombre des Clients</div>
+                        </div>
+                    </div>
+                </div>
+                <a ui-sref="client">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="material-icons">navigate_next</i></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+</div>

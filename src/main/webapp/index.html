@@ -1,0 +1,161 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <!--Import Google Icon Font-->
+    <!--<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--&lt;!&ndash;Import materialize.css&ndash;&gt;-->
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/my.css"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.min.css">
+    <link type="text/css" rel="stylesheet"
+          href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+
+    <link type="text/css" rel="stylesheet" href="assets/my.css"/>
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.css">
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body ng-cloak="" class="container">
+
+
+<div ui-view="navbar" ng-cloak="">
+
+</div>
+
+
+<div class="container-fluid">
+    <div class="row main">
+        <div ui-view="sidenavbar" ng-cloak="">
+
+        </div>
+        <div class="col-sm-9  col-md-10  well active">
+            <div class="row placehol    ders">
+                <div ui-view="content"></div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+
+
+<script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/ngSweetAlert/SweetAlert.min.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert-dev.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script src="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
+
+<!--  app js files -->
+<script src="scripts/app/app.module.js"></script>
+<script src="scripts/core/auth/auth.service.js"></script>
+<script src="scripts/core/auth/principal.service.js"></script>
+<script src="scripts/core/autocomplete.directive.js"></script>
+<!--Home module-->
+<script src="scripts/app/home/home.js"></script>
+<script src="scripts/app/home/home.service.js"></script>
+<script src="scripts/app/home/home.controller.js"></script>
+
+<script src="scripts/app/sidenavbar/sidenavbar.controller.js"></script>
+<script src="scripts/app/navbar/navbar.controller.js"></script>
+<script src="scripts/app/error/error.js"></script>
+
+
+<script src="scripts/app/user/user.js"></script>
+<script src="scripts/core/auth/authority.directive.js"></script>
+
+<script src="scripts/core/auth/provider/auth.session.service.js"></script>
+
+<script src="scripts/core/auth/services/account.service.js"></script>
+<script src="scripts/core/auth/services/sessions.service.js"></script>
+
+<script src="scripts/core/interceptor/auth.interceptor.js"></script>
+
+<!--  Client js files -->
+<script src="scripts/app/user/client/client.controller.js"></script>
+<script src="scripts/app/user/client/client.js"></script>
+<script src="scripts/app/user/client/client.service.js"></script>
+<script src="scripts/app/user/client/clientDetails.controller.js"></script>
+<script src="scripts/app/user/client/clientDialog.controller.js"></script>
+<!--  User js files -->
+<script src="scripts/app/user/web/user.controller.js"></script>
+<script src="scripts/app/user/web/user.js"></script>
+<script src="scripts/app/user/web/user.service.js"></script>
+<script src="scripts/app/user/web/userDetails.controller.js"></script>
+<script src="scripts/app/user/web/userDialog.controller.js"></script>
+
+
+<!--  productType  js files -->
+<script src="scripts/app/productType/productType.controller.js"></script>
+<script src="scripts/app/productType/productType.js"></script>
+<script src="scripts/app/productType/productType.service.js"></script>
+<script src="scripts/app/productType/productTypeDialog.controller.js"></script>
+
+<!--  logo  js files -->
+<script src="scripts/app/logo/logo.controller.js"></script>
+<script src="scripts/app/logo/logo.js"></script>
+<script src="scripts/app/logo/logo.service.js"></script>
+<script src="scripts/app/logo/logoDialog.controller.js"></script>
+
+<!--  text color  js files -->
+<script src="scripts/app/textColor/textColor.controller.js"></script>
+<script src="scripts/app/textColor/textColor.js"></script>
+<script src="scripts/app/textColor/textColor.service.js"></script>
+<script src="scripts/app/textColor/textColorDialog.controller.js"></script>
+<!--  Category  js files -->
+<script src="scripts/app/category/category.controller.js"></script>
+<script src="scripts/app/category/category.js"></script>
+<script src="scripts/app/category/category.service.js"></script>
+<script src="scripts/app/category/categoryDialog.controller.js"></script>
+
+<!--  product  js files -->
+<script src="scripts/app/product/product.controller.js"></script>
+<script src="scripts/app/product/product.js"></script>
+<script src="scripts/app/product/product.service.js"></script>
+<script src="scripts/app/product/productDialog.controller.js"></script>
+
+<!--  Order  js files -->
+<script src="scripts/app/order/order.controller.js"></script>
+<script src="scripts/app/order/order.js"></script>
+<script src="scripts/app/order/order.service.js"></script>
+<script src="scripts/app/order/order.controller.js"></script>
+<script src="scripts/app/order/orderDialog.controller.js"></script>
+<script src="scripts/app/order/orderCreate.controller.js"></script>
+<script src="scripts/app/order/orderUpdate.controller.js"></script>
+
+
+<!--  Account  js files -->
+<script src="scripts/app/account/login/login.js"></script>
+<script src="scripts/app/account/login/login.controller.js"></script>
+
+
+<script src="scripts/app/api/api.js"></script>
+<script src="scripts/app/util/dateutil.service.js"></script>
+<script src="scripts/app/util/parse-links.service.js"></script>
+<script src="scripts/app/util/data-util.service.js"></script>
+
+<script>
+    $.material.init();
+</script>
+</body>
+</html>

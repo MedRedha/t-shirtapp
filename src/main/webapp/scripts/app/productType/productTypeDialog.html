@@ -1,0 +1,60 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form name="editForm" role="form" ng-submit="vm.save()" class="form-horizontal">
+
+
+    <fieldset>
+        <legend>Catégorie {{vm.productType.id}}</legend>
+        <div class="form-group">
+            <label for="first_name" class="col-md-2 control-label">Nom</label>
+            <div class="col-md-10">
+                <input id="first_name" type="text" required="true" class="form-control" placeholder="Nom"
+                       ngRequired="true"
+                       ng-model="vm.productType.name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="togglebutton">
+                    <label>
+                        <input type="checkbox" ng-model="vm.productType.status" ng-true-value="'ENABLED'"
+                               ng-false-value="'DISABLED'"> Statut
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Photo</label>
+
+
+            <div class="col-md-4">
+                <div class=" input-group">
+                <span class="input-group-btn input-group-sm">
+                    <button type="file" ngf-select class="btn btn-fab btn-fab-mini"
+                            accept="image/*" ng-model="vm.file">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                     </span>
+                    <input id="uuid" type="text" required readonly class="form-control" ngRequired="true"
+                           ng-model="vm.productType.logoPath">
+                </div>
+
+            </div>
+            <div class="col-md-2">
+            <img ngf-thumbnail="vm.file" width="104" height="136">
+            </div>
+            <div class="col-md-2">
+                <a ng-click="vm.submit()" class="btn btn-primary">télécharger</a>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <span class=""></span>&nbsp;<span>Créer</span>
+        </button>
+    </fieldset>
+</form>
+
+

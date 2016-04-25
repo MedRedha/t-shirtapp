@@ -1,0 +1,125 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.msg}}</uib-alert>
+<form ng-submit="vm.save()" class="form-horizontal">
+
+    <fieldset>
+        <legend>Commande {{vm.order.id}}</legend>
+
+
+        <div class="form-group">
+
+            <label class="col-md-2 control-label">Catégorie</label>
+            <div class="col-md-10">
+                <select class="form-control" ng-model="vm.type" ng-value="vm.type" ng-change="vm.productSize()"
+                        ng-options="item.name for item in vm.temp"></select>
+
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.showSize">
+
+            <label class="col-md-2 control-label">Taille</label>
+            <div class="col-md-10">
+                <select class="form-control" ng-model="vm.size" ng-change="vm.productColor()"
+                        ng-options="item.size for item in vm.tempSize"></select>
+
+            </div>
+        </div>
+
+        <div class="form-group" ng-show="vm.showColor">
+
+            <label class="col-md-2 control-label">Couleur</label>
+            <div class="col-md-10" style="background-color: {{vm.product.color}}">
+                <select class="form-control" required ng-model="vm.order.productID"
+                        >
+                    <option ng-repeat="item in vm.tempColor" value="{{item.id}}">{{item.color}}</option>
+                </select>
+
+            </div>
+        </div>
+
+
+        <div ng-show="vm.showColor">
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Logo</label>
+                <div class="col-md-10" style="background-color: {{vm.product.color}}">
+                    <select class="form-control" required ng-model="vm.logoTemp"
+                            ng-options='item as (item.tag +"/"+item.name) for item in vm.tempLogos'>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Quantité</label>
+                <div class="col-md-10">
+                    <input type="number" min="0"required ng-model="vm.order.quantity" class="form-control"></div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Client</label>
+                <div class="col-md-10" style="background-color: {{vm.product.color}}">
+                    <select class="form-control" required ng-model="vm.order.userID"
+                            ng-options='item.id as (item.firstName +" "+item.lastName) for item in vm.tempClients'>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Prix total</label>
+                <div class="col-md-10">
+                    <input type="number" min="0" step="0.01" required ng-model="vm.order.total" class="form-control"></div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Avance</label>
+                <div class="col-md-10">
+                    <input type="number" min="0" step="0.01" ng-model="vm.order.advance" class="form-control"></div>
+
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Réaliser par {{vm.order.realizedBy.username}}</label>
+                <div class="col-md-10" style="background-color: {{vm.product.color}}">
+                    <select class="form-control" ng-model="vm.order.realizedBy"
+                            ng-init="vm.order.realizedBy = vm.tempUsers[0]"
+                            ng-options='item as (item.firstName +" "+item.lastName) for item in vm.tempUsers'>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Description</label>
+                <div class="col-md-10">
+                    <textarea type="text" rows="4"  ng-model="vm.order.description"  required class="form-control"/></div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <span class=""></span>&nbsp;<span>Créer</span>
+            </button>
+        </div>
+
+
+        </div>
+
+    </fieldset>
+
+</form>
+
+

@@ -1,0 +1,18 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-9" author="amine">
+        <script>
+
+            db.t_user.insert(
+            {
+                "_id" : "user-1",
+                "username" : "admin",
+                "password" : "$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC",
+                "firstName": "admin",
+                "lastName": "Administrator",
+                "status": "ACTIVATED",
+                "authorities": [{"_id": "ROLE_ADMIN"}, {"_id": "ROLE_USER"}]
+            });
+
+        </script>
+    </changeSet>
+</mongoChangeLog>

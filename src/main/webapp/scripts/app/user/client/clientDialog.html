@@ -1,0 +1,48 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form name="editForm" role="form" ng-submit="vm.save()">
+    <fieldset>
+        <legend>Client {{vm.client.id}}</legend>
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="first_name">Nom</label>
+            <div class="col-md-10">
+                <input id="first_name" type="text" required="true" class="form-control" ng-model="vm.client.firstName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="last_name">Prénom</label>
+            <div class="col-md-10">
+                <input id="last_name" type="text" required="true" class="form-control" ng-model="vm.client.lastName">
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="phoneNumber">Téléphone</label>
+            <div class="col-md-10">
+                <input id="phoneNumber" type="text" required="true" class="form-control" ng-model="vm.client.phoneNumber">
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="phoneNumber">Wilaya</label>
+            <div class="col-md-10">
+                <select class="form-control" ng-model="vm.client.wilaya"
+                         ng-options="item.nom as item.nom for item in vm.willaya" value="{{item.nom}}"/>
+                </select>
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary btn-large">
+            <span class=""></span>&nbsp;<span>Créer</span>
+        </button>
+
+    </fieldset>
+</form>
+

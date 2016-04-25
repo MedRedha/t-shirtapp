@@ -1,0 +1,52 @@
+<div class="mheaderState"> <h1 class="header">Clients</h1></div>
+<div class="col-lg-12">
+    <uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.msg}}</uib-alert>
+    <a class="btn  btn-lg btn-primary " ui-sref="client.create" role="button"><span class="glyphicon glyphicon-plus"></span> Ajouter</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th data-field="Numero">Numero</th>
+            <th data-field="name">Nom</th>
+            <th data-field="lastName">Prénom</th>
+            <th data-field="wilaya">Wilaya</th>
+            <th data-field="facebook">FaceBook</th>
+            <th data-field="status">Statut</th>
+            <th data-field="action">Action</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="client in vm.clients">
+            <td><img ng-src="https://graph.facebook.com/{{client.fbID}}/picture?type=small"></td>
+            <td>{{client.clientRef}}</td>
+            <td>{{client.firstName}}</td>
+            <td>{{client.lastName}}</td>
+            <td>{{client.wilaya}}</td>
+            <td><a href="{{client.urlFb}}" target="_blank">Visit Client</a></td>
+            <td>
+                <span class="label "ng-class="{'label-success': client.status == 'ACTIVATED' , 'label-danger': client.status == 'BLOCKED',
+              } ">{{client.status}}</span>
+
+            <td>
+
+
+                        <a ng-hide="vm.isBlocked(client.status)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="vm.block(client)"><i class="material-icons">block</i></a>
+                        <a ng-show="vm.isBlocked(client.status)" class="btn btn-success btn-fab btn-fab-mini" ng-click="vm.activate(client)"><i class="material-icons">done</i></a>
+
+                        <a class="btn btn-info btn-fab btn-fab-mini" ui-sref="client.detail({id:client.id})"><i class="material-icons">&#xE8F4;</i></a>
+
+
+
+
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+

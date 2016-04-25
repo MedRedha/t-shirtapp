@@ -1,0 +1,16 @@
+
+<form class="form-signin" ng-submit="login($event)">
+    <div style="color: red" ng-show="authenticationError">
+        <strong>Désolé, nous n'avons pas pu trouver  d'utilisateur avec ce login et ce mot de passe.</strong>
+    </div>
+    <h2 class="form-signin-heading">Identifiez-vous</h2>
+    <label for="inputEmail" class="sr-only">User name</label>
+    <input type="text" id="inputEmail" ng-model="username" class="form-control" placeholder="User name" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" ng-model="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+
+</form>
+
+    

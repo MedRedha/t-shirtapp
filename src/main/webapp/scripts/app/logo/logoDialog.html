@@ -1,0 +1,86 @@
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<form ng-submit="vm.save()" class="form-horizontal">
+
+    <fieldset>
+        <legend>Logo {{vm.Logo.id}}</legend>
+
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">Catégorie</label>
+            <div class="col-md-10" style="background-color: {{vm.product.color}}">
+                <select class="form-control" ng-model="vm.logo.category"
+                        ng-options="item.name for item in vm.categorys">
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="ref" class="control-label col-md-2">Code Logo</label>
+
+            <div class="col-md-10">
+                <input id="ref" type="text" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.logo.tag">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ref" class="control-label col-md-2">Nom</label>
+
+            <div class="col-md-10">
+                <input id="name" type="text" required="true" class="form-control" ngRequired="true"
+                       ng-model="vm.logo.name">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="togglebutton">
+                    <label>
+                        <input type="checkbox" ng-model="vm.logo.status" ng-true-value="'ENABLED'"
+                               ng-false-value="'DISABLED'"> Statut
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Image</label>
+
+
+            <div class="col-md-4">
+                <div class=" input-group">
+                <span class="input-group-btn input-group-sm">
+                    <button type="file" ngf-select class="btn btn-fab btn-fab-mini"
+                            accept="image/*" ng-model="vm.file">
+                        <i class="material-icons">attach_file</i>
+                    </button>
+                     </span>
+                    <input id="uuid" type="text" required readonly class="form-control" ngRequired="true"
+                           ng-model="vm.logo.uuid">
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <img ngf-thumbnail="vm.file" width="104" height="136">
+            </div>
+            <div class="col-md-2">
+                <a ng-click="vm.submit()" class="btn btn-primary">Télécharger</a>
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">
+            <span class=""></span>&nbsp;<span>Céer</span>
+        </button>
+
+    </fieldset>
+</form>
+
+

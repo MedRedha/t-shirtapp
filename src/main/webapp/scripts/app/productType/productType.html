@@ -1,0 +1,50 @@
+<div class="card-panel mheaderState"><h1 class="header">Catégorie</h1></div>
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<a class="btn btn-primary btn-lg" ui-sref="productType.create"><span class="glyphicon glyphicon-plus"></span>
+    Ajouter</a>
+
+<div class="col-lg-12">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th data-field="name">Nom</th>
+            <th data-field="status">Statut</th>
+            <th data-field="logoPath">Image</th>
+            <th data-field="action">Action</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="productType in vm.productTypes">
+            <td><a ui-sref="productType.edit({id:productType.id})">{{productType.name}}</a></td>
+            <td>
+                <span class="label " ng-class="{'label-success': productType.status == 'ENABLED' , 'label-danger': productType.status == 'DISABLED',
+              } ">{{productType.status}}</span>
+
+            </td>
+            <td><img ng-src="api/logo/image?name={{productType.logoPath}}"
+                     class="img-thumbnail img-rounded" alt="Cinque Terre" width="105" height="105"></td>
+
+            <td>
+
+
+                <a ng-hide="vm.isDisable(productType.status)" class="btn btn-warning btn-fab btn-fab-mini"
+                   ng-click="vm.disable(productType)"><i class="material-icons">block</i></a>
+                <a ng-show="vm.isDisable(productType.status)" class="btn btn-success btn-fab btn-fab-mini"
+                   ng-click="vm.enable(productType)"><i class="material-icons">done</i></a>
+
+
+                </ul>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+

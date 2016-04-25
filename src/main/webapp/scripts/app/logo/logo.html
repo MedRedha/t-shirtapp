@@ -1,0 +1,58 @@
+<div class="mheaderState"><h1 class="header">Logos</h1></div>
+
+<uib-alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.msg}}</uib-alert>
+
+<div class="col-lg-12">
+    <a class="btn btn-primary btn-lg " ui-sref="logo.create" role="button"><span
+            class="glyphicon glyphicon-plus"></span> Ajouter</a>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th data-field="name">Image</th>
+            <th data-field="productType">Code Logo</th>
+            <th data-field="productType">Nom</th>
+            <th data-field="status">Catégorie</th>
+            <th data-field="status">Statut</th>
+            <th data-field="action">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="logo in vm.logos">
+            <td>
+                <img ng-src="api/logo/image?name={{logo.uuid}}"
+                     class="img-thumbnail img-rounded" alt="Cinque Terre" width="105" height="135">
+            </td>
+            <td>{{logo.tag}}</td>
+            <td>{{logo.name}}</td>
+            <td>{{logo.category.name}}</td>
+            <td>
+                <span class="label" ng-class="{'label-success': logo.status == 'ENABLED' , 'label-danger': logo.status == 'DISABLED',
+              } ">{{logo.status}}
+                </span>
+
+            </td>
+
+            <td>
+
+                <a ng-hide="vm.isDisable(logo.status)" class="btn btn-warning btn-fab btn-fab-mini" ng-click="vm.disable(logo)"><i class="material-icons">block</i></a></a>
+                <a ng-show="vm.isDisable(logo.status)" class="btn btn-success btn-fab btn-fab-mini" ng-click="vm.enable(logo)"><i class="material-icons">done</i></a></a>
+                <a class="btn btn-danger btn-fab btn-fab-mini" ng-click="vm.delete(logo)"><i class="material-icons left">delete</i></a>
+
+
+                </ul>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    {{totalItems}}
+    <div class="text-center">
+        <uib-pagination total-items="vm.totalItems" max-size="vm.maxSize" items-per-page="vm.ItemPerPage" ma
+                        ng-model="vm.currentPage" ng-change="vm.pageChanged()"></uib-pagination>
+    </div>
+
+</div>
+

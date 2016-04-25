@@ -1,0 +1,47 @@
+<fieldset>
+    <legend>User details</legend>
+
+    <div class="form-group">
+        <label for="first_name" class="col-md-2 control-label">Nom</label>
+        <div class="col-md-10">
+            <input id="first_name" type="text" class="form-control" value="{{vm.user.firstName}}">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="last_name" class="col-md-2 control-label">Prénom</label>
+        <div class="col-md-10">
+            <input id="last_name" type="text" class="form-control" value="{{vm.user.lastName}}">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="username" class="col-md-2 control-label">Nom d'utilisateur</label>
+        <div class="col-md-10">
+            <input id="username" type="text" class="form-control" value="{{vm.user.username}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phoneNumber" class="col-md-2 control-label">Téléphone</label>
+        <div class="col-md-10">
+            <input id="phoneNumber" type="text" class="form-control" value="{{vm.user.phoneNumber}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="status" class="col-md-2 control-label">Statut </label>
+        <div class="col-md-10">
+        <span id="status" class="label" ng-class="{'label-success': vm.user.status == 'ACTIVATED' , 'label-danger': vm.user.status == 'BLOCKED',
+              } ">{{vm.user.status}}
+        </span>
+        </div>
+
+    </div>
+
+
+</fieldset>
+
+
