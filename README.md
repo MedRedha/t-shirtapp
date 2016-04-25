@@ -13,7 +13,7 @@ This repo for t-shirt app web
  * first start mongo database 
 
 ```
-#!python
+
 mongod
 
 
@@ -21,14 +21,14 @@ mongod
 * in new terminal run
 ```
 
-#!python
+
 mongo
 
 
 ```
 * and then
 ```
-#!python
+
 use devapp
 
 ```
@@ -36,7 +36,7 @@ use devapp
 3. got to app root directory and run the command
 
 ```
-#!python
+
 bower update
 
 ```
