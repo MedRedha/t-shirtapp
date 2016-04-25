@@ -62,7 +62,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
         mongeez.setFile(new ClassPathResource("/mongeez/master.xml"));
         mongeez.setMongo(mongo);
         mongeez.setDbName(mongoProperties.getDatabase());
-        // mongeez.process();
+        mongeez.process();
         return mongeez;
     }
 }
